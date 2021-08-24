@@ -1,0 +1,29 @@
+.card {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 48px;
+  transition: all 100ms;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.title {
+  text-overflow: ellipsis;
+}
+
+.metadata {
+  font-size: 12px;
+  margin-top: 4px;
+}

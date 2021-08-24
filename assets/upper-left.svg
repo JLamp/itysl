@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="413px" height="716px" viewBox="0 0 413 716" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <rect id="path-1" x="335.617912" y="447.895042" width="417" height="720"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(-335.617912, -447.895042)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Rectangle"></g>
+            <g id="Group" mask="url(#mask-2)">
+                <g transform="translate(448.165363, 584.056413) rotate(-330.000000) translate(-448.165363, -584.056413) translate(255.976597, 20.606394)" id="Rectangle">
+                    <rect fill="#277DA1" x="3.35451968" y="2.90003701" width="64" height="1124"></rect>
+                    <rect fill="#90BE6D" x="66.8519423" y="0.880799123" width="64" height="1124"></rect>
+                    <rect fill="#F9C74F" x="130.48334" y="1.09361204" width="64" height="1124"></rect>
+                    <rect fill="#F94144" x="193.614737" y="0.440399562" width="64" height="1124"></rect>
+                    <rect fill="#F3722C" x="257.246134" y="0.653212483" width="64" height="1124"></rect>
+                    <rect fill="#F9C74F" x="320.377531" y="0" width="64" height="1124"></rect>
+                    <rect fill-opacity="0.1" fill="#000000" x="0" y="0.217967697" width="384" height="1124"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
