@@ -5,7 +5,7 @@ export function Sketch(props) {
     backgroundImage: "url(" + props.image + ")",
   };
   return (
-    <a className={styles.card} href={props.onClick}>
+    <a className={styles.card} href={props.link}>
       <div className={styles.header} style={BackgroundImage} />
       <div style={{ padding: "8px" }}>
         <div className={styles.title}>{props.title}</div>
