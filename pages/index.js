@@ -2,6 +2,7 @@ import { Client } from "@notionhq/client";
 import { Header } from "../components/Header";
 import { SketchList } from "../components/SketchList";
 import styles from "../styles/Home.module.css";
+import Head from "next/head";
 
 export default function Home({ sketches }) {
   function randomEp() {
@@ -11,9 +12,16 @@ export default function Home({ sketches }) {
     window.open(sketches[ep].properties.Link["url"]);
   }
   return (
+    <div>
+    <Head>
+      <title>I Think You Should Leave DB</title>
+      <meta property="og:title" content="I Think You Should Leave DB" />
+      <meta property="og:image" content="../asssets/meta-image.png" />
+    </Head>
     <div className={styles.container}>
       <Header link={randomEp} />
-      <SketchList sketches={sketches} />
+      <SketchList sketches={sketches}/>
+    </div>
     </div>
   );
 }
