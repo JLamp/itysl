@@ -13,6 +13,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 540px) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .header {
   background-size: cover;
   background-position: center;
