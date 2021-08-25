@@ -1,12 +1,18 @@
 import styles from "../styles/Sketch.module.css";
+import Image from "next/image";
 
 export function Sketch(props) {
-  const BackgroundImage = {
-    backgroundImage: "url(" + props.image + ")",
-  };
+  const coverImage = "/images/covers/" + props.image + ".jpg";
   return (
     <a className={styles.card} href={props.link}>
-      <div className={styles.header} style={BackgroundImage} />
+      <div className={styles.header}>
+        <Image
+          className={styles.image}
+          src={coverImage}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
       <div style={{ padding: "8px" }}>
         <div className={styles.title}>{props.title}</div>
         <div className={styles.metadata}>
