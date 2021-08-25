@@ -16,11 +16,12 @@ export default function Home({ sketches }) {
     <Head>
       <title>I Think You Should Leave DB</title>
       <meta property="og:title" content="I Think You Should Leave DB" />
-      <meta property="og:image" content="../asssets/meta-image.png" />
+      <meta property="og:image" content="/images/meta-image.png" />
     </Head>
     <div className={styles.container}>
       <Header link={randomEp} />
-      <SketchList sketches={sketches}/>
+      <SketchList sketches={sketches} season={1}/>
+      <SketchList sketches={sketches} season={2}/>
     </div>
     </div>
   );
