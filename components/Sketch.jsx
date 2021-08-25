@@ -1,4 +1,4 @@
-import styles from "../styles/Card.module.css";
+import styles from "../styles/Sketch.module.css";
 
 export function Sketch(props) {
   const BackgroundImage = {

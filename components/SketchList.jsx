@@ -1,5 +1,5 @@
 import { Sketch } from "../components/Sketch";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Grid.module.css";
 
 export function SketchList({ sketches }) {
   return (
