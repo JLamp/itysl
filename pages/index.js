@@ -4,7 +4,6 @@ import { SketchList } from "../components/SketchList";
 import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
-import { ToastContainer } from "react-toastify";
 
 export default function Home({ sketches }) {
   function randomEp() {
