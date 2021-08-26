@@ -4,6 +4,7 @@ import { SketchList } from "../components/SketchList";
 import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
+import { ToastContainer } from "react-toastify";
 
 export default function Home({ sketches }) {
   function randomEp() {
@@ -17,7 +18,7 @@ export default function Home({ sketches }) {
     <Head>
       <title>I Think You Should Leave DB</title>
       <meta property="og:title" content="I Think You Should Leave DB" />
-      <meta property="og:image" content="/images/meta-image.png" />
+      <meta property="og:image" content="/images/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
     </Head>
     <div className={styles.container}>
@@ -26,6 +27,7 @@ export default function Home({ sketches }) {
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
     </div>
+    <ToastContainer />
     </div>
   );
 }
