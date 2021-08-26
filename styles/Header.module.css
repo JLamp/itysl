@@ -1,18 +1,23 @@
-.container {
-  font-family: cooper-black-std, serif;
+.container,
+.sectionContainer {
   font-weight: 400;
   font-style: normal;
   width: 100%;
-  max-width: 960px;
-  margin: 48px 0;
   display: flex;
   justify-content: space-between;
+
+  font-style: italic;
 }
 
-.logo {
-  font-size: 32px;
-  color: #efb0b3;
-  -webkit-text-stroke: 1px white;
+.container {
+  margin: 48px 0 24px 0;
+}
+
+.sectionContainer {
+  font-family: cooper-black-std, serif;
+  margin: 24px 0;
+  font-size: 24px;
+  color: white;
 }
 
 .button {

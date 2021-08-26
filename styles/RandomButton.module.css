@@ -1,0 +1,23 @@
+.randomButton {
+  position: fixed;
+  right: 48px;
+  bottom: 48px;
+  z-index: 1000;
+  border: none;
+  cursor: pointer;
+  height: 140px;
+  width: 140px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 110ms;
+}
+
+.randomButton:hover {
+  transform: scale(1.1) skew(1deg);
+}
+
+@media (max-width: 540px) {
+  .randomButton {
+    right: 0px;
+    bottom: 0px;
+  }
+}
