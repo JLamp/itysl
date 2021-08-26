@@ -63,7 +63,12 @@ export function Sketch(props) {
 
   return (
     <div className={styles.card}>
-      <a className={styles.header} href={props.link} target="_blank">
+      <a
+        className={styles.header}
+        href={props.link}
+        rel="noreferrer"
+        target="_blank"
+      >
         <Image
           className={styles.image}
           src={coverImage}
