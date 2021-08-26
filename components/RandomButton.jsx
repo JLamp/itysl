@@ -8,7 +8,6 @@ export function RandomButton({ sketches }) {
     var max = Math.floor(sketches.length);
     var ep = Math.floor(Math.random() * (max - min) + min);
     window.open(sketches[ep].properties.Link["url"]);
-    return ep;
   }
   return (
     <div>

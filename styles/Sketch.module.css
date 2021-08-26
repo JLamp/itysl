@@ -37,5 +37,10 @@
 
 .metadata {
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 8px;
+  color: #4a4a51;
+}
+
+.metadata span {
+  color: #7b7b87;
 }
