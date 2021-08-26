@@ -77,3 +77,9 @@
 .copyIcon:hover {
   opacity: 80% !important;
 }
+
+@media (max-width: 540px) {
+  .button {
+    display: none;
+  }
+}
