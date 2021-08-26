@@ -26,7 +26,6 @@ export default function Home({ sketches }) {
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
     </div>
-    <ToastContainer />
     </div>
   );
 }
