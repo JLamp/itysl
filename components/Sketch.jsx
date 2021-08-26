@@ -3,7 +3,6 @@ import Image from "next/image";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import copyIcon from "../public/images/link-icon.svg";
 import { useState, useEffect } from "react";
-import { MetaData } from "../components/MetaData";
 
 export function Sketch(props) {
   const coverImage = "/images/covers/" + props.image + ".jpg";
@@ -75,12 +74,17 @@ export function Sketch(props) {
       </a>
       <div className={styles.sketchInfoContainer}>
         <div className={styles.sketchInfo}>
-          <a className={styles.title} href={props.link} target="_blank">
+          <a
+            className={styles.title}
+            href={props.link}
+            rel="noreferrer"
+            target="_blank"
+          >
             {props.title}
           </a>
           <CopyToClipboard text={props.link} onClick={showToast}>
             <div className={styles.metadata}>
-              <div class={styles.copyIcon}>
+              <div className={styles.copyIcon}>
                 <Image src={copyIcon} layout="fill" />
               </div>
 
