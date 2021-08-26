@@ -1,5 +1,7 @@
 import styles from "../styles/Sketch.module.css";
 import Image from "next/image";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import copyIcon from "../public/images/link-icon.svg";
 
 export function Sketch(props) {
   const coverImage = "/images/covers/" + props.image + ".jpg";
@@ -23,31 +25,37 @@ export function Sketch(props) {
   }
   const timeStamp = makeTimeStamp();
 
-  function getTime() {
-    var time = parseInt(props.link.split("=").pop());
-    var minutes = Math.floor(time / 60);
-    var seconds = time - minutes * 60;
-    var timeStamp = minutes.toString() + ":" + seconds.toString();
-    console.log(timeStamp);
-    return timeStamp;
-  }
   return (
-    <a className={styles.card} href={props.link}>
-      <div className={styles.header}>
+    <div className={styles.card}>
+      <a className={styles.header} href={props.link}>
         <Image
           className={styles.image}
           src={coverImage}
           layout="fill"
           objectFit="cover"
         />
-      </div>
-      <div style={{ padding: "12px" }}>
-        <div className={styles.title}>{props.title}</div>
+      </a>
+      <div className={styles.sketchInfo}>
+        <a className={styles.title} href={props.link}>
+          {props.title}
+        </a>
         <div className={styles.metadata}>
-          Sn. {props.season} <span>|</span> Ep. {props.episode} <span>|</span>{" "}
-          {timeStamp}
+          <a href={props.link}>
+            Sn. {props.season} <span className={styles.bar}>|</span> Ep.{" "}
+            {props.episode} <span className={styles.bar}>|</span> {timeStamp}
+          </a>
+          <CopyToClipboard text={props.link}>
+            <button className={styles.button}>
+              <Image
+                className={styles.copyIcon}
+                src={copyIcon}
+                width={12}
+                height={12}
+              />
+            </button>
+          </CopyToClipboard>
         </div>
       </div>
-    </a>
+    </div>
   );
 }

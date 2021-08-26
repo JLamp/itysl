@@ -1,6 +1,7 @@
 .card {
-  display: grid;
-  grid-template-rows: minmax(auto, 156px) 1fr;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background-color: white;
   border-radius: 8px;
   margin-bottom: 48px;
@@ -25,22 +26,54 @@
   background-position: center;
   border-radius: 8px 8px 0 0;
   position: relative;
+  height: 156px;
 }
 
 .image {
   border-radius: 8px 8px 0 0;
 }
 
+.sketchInfo {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
-  text-overflow: ellipsis;
+  font-size: 16px;
 }
 
 .metadata {
   font-size: 12px;
   margin-top: 8px;
   color: #4a4a51;
+  display: flex;
+  justify-content: space-between;
 }
 
-.metadata span {
+.bar {
   color: #7b7b87;
+}
+
+.button,
+.button:hover {
+  color: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.card:hover .copyIcon {
+  opacity: 60%;
+}
+
+.copyIcon {
+  transition: all 110ms;
+  opacity: 0%;
+  width: 16px;
+  height: 16px;
+}
+
+.copyIcon:hover {
+  opacity: 80% !important;
 }
