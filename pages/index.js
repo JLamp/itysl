@@ -15,16 +15,17 @@ export default function Home({ sketches }) {
   return (
     <div>
     <Head>
-      <title>I Think You Should Leave DB</title>
-      <meta property="og:title" content="I Think You Should Leave DB" />
+      <title>I Think You Should Leave Db</title>
+      <meta property="og:title" content="I Think You Should Leave Db" />
       <meta property="og:image" content="/images/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
     </Head>
     <div className={styles.container}>
       <RandomButton sketches={sketches}/>
-      <Header link={randomEp} />
+      <Header />
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
+      <div className={styles.footer}>Site by <a href={"https://twitter.com/JLampron"}>lamp</a></div>
     </div>
     </div>
   );

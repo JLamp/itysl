@@ -40,7 +40,7 @@
 }
 
 .title {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .metadata {
@@ -48,7 +48,8 @@
   margin-top: 8px;
   color: #4a4a51;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .bar {
@@ -63,23 +64,76 @@
   cursor: pointer;
 }
 
+.copyIcon {
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  position: relative;
+  object-fit: contain;
+}
+
 .card:hover .copyIcon {
   opacity: 60%;
 }
 
-.copyIcon {
-  transition: all 110ms;
-  opacity: 0%;
-  width: 16px;
-  height: 16px;
-}
-
-.copyIcon:hover {
+.metadata:hover .copyIcon {
   opacity: 80% !important;
 }
 
+.metadata > * {
+  transition: all 110ms;
+}
+
+.metaText {
+  transform: translateX(-14px);
+}
+
+.card:hover .metaText {
+  transform: translateX(0);
+}
+
+.toast {
+  display: none;
+}
+
+.sketchInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyIconMobile {
+  display: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  object-fit: contain;
+  margin-right: 16px;
+  opacity: 30%;
+}
+
+.copyIconMobile:hover {
+  opacity: 60%;
+}
+
+.copyIconMobile:active {
+  opacity: 80%;
+}
+
 @media (max-width: 540px) {
-  .button {
+  .copyIcon {
+    opacity: 60%;
+  }
+  .metaText {
+    transform: translateX(0);
+  }
+
+  .copyIcon {
     display: none;
+  }
+
+  .copyIconMobile {
+    display: block;
   }
 }

@@ -3,11 +3,8 @@ import Image from "next/image";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import copyIcon from "../public/images/link-icon.svg";
 import { useState, useEffect } from "react";
-import { MetaData } from "../components/MetaData";
 
-export function Sketch(props) {
-  const coverImage = "/images/covers/" + props.image + ".jpg";
-
+export function MetaData(props) {
   function makeTimeStamp() {
     var timeInt = parseInt(props.link.split("=").pop());
     var minutes = Math.floor(timeInt / 60);
@@ -27,12 +24,6 @@ export function Sketch(props) {
   }
   const timeStamp = makeTimeStamp();
 
-  const toast = <span className={styles.toast}>Copied!</span>;
-
-  function showToast() {
-    toast.style.display = "block";
-  }
-
   const [clicked, setClicked] = useState(false);
 
   // useEffect(() => {
@@ -44,10 +35,10 @@ export function Sketch(props) {
   // });
 
   const metaData = (
-    <span className={styles.metaText}>
+    <a href={props.link} target="_blank">
       Sn. {props.season} <span className={styles.bar}>|</span> Ep.{" "}
       {props.episode} <span className={styles.bar}>|</span> {timeStamp}
-    </span>
+    </a>
   );
   const notification = <span>Send it to your mother in law!</span>;
 
@@ -63,37 +54,18 @@ export function Sketch(props) {
   }
 
   return (
-    <div className={styles.card}>
-      <a className={styles.header} href={props.link} target="_blank">
-        <Image
-          className={styles.image}
-          src={coverImage}
-          layout="fill"
-          objectFit="cover"
-          lazyBoundary="400px"
-        />
-      </a>
-      <div className={styles.sketchInfoContainer}>
-        <div className={styles.sketchInfo}>
-          <a className={styles.title} href={props.link} target="_blank">
-            {props.title}
-          </a>
-          <CopyToClipboard text={props.link} onClick={showToast}>
-            <div className={styles.metadata}>
-              <div class={styles.copyIcon}>
-                <Image src={copyIcon} layout="fill" />
-              </div>
-
-              {text}
-            </div>
-          </CopyToClipboard>
-        </div>
-        <CopyToClipboard text={props.link} onClick={showToast}>
-          <button className={styles.copyIconMobile}>
-            <Image src={copyIcon} layout="fill" />
-          </button>
-        </CopyToClipboard>
+    <CopyToClipboard text={props.link}>
+      <div className={styles.metadata}>
+        {text}
+        <button className={styles.button} onClick={handleClick}>
+          <Image
+            className={styles.copyIcon}
+            src={copyIcon}
+            width={12}
+            height={12}
+          />
+        </button>
       </div>
-    </div>
+    </CopyToClipboard>
   );
 }
