@@ -20,21 +20,6 @@
   color: white;
 }
 
-.button {
-  background-color: #f94144;
-  border-radius: 8px;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  font-family: cooper-black-std, serif;
-  cursor: pointer;
-  max-height: auto;
-}
-
-.button:hover {
-  background-color: #e13535;
-}
-
 .jump {
   font-size: 14px;
 }

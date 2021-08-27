@@ -1,4 +1,3 @@
-import { Sketch } from "../components/Sketch";
 import styles from "../styles/Header.module.css";
 
 export function SectionHeader({ season, onClick }) {

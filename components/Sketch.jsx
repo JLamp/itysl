@@ -4,7 +4,6 @@ import copyIcon from "../public/images/link-icon.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import toastImage from "../public/images/toast-image.png";
 
 export function Sketch(props) {
   const coverImage = "/images/covers/" + props.image + ".jpg";
@@ -28,7 +27,7 @@ export function Sketch(props) {
   }
   const timeStamp = makeTimeStamp();
 
-  const toastImage = (
+  const toastContent = (
     <div className={styles.toastContent}>
       <div className={styles.toastImage}></div>
       <span>That&apos;ll copy realll nice!</span>
@@ -36,7 +35,7 @@ export function Sketch(props) {
   );
 
   const handleClick = () => {
-    toast(({ closeToast }) => toastImage, {
+    toast(({ closeToast }) => toastContent, {
       position: toast.POSITION.BOTTOM_LEFT,
       hideProgressBar: true,
       autoClose: 3000,

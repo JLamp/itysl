@@ -58,14 +58,6 @@
   color: #7b7b87;
 }
 
-.button,
-.button:hover {
-  color: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
 .copyText {
   opacity: 0;
   transition: color 110ms;
