@@ -4,7 +4,7 @@ import copyIcon from "../public/images/link-icon.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import random from "../public/images/Random.png";
+import toastImage from "../public/images/toast-image.png";
 
 export function Sketch(props) {
   const coverImage = "/images/covers/" + props.image + ".jpg";
@@ -28,10 +28,15 @@ export function Sketch(props) {
   }
   const timeStamp = makeTimeStamp();
 
-  const toastImage = <Image src={random} />;
+  const toastImage = (
+    <div class={styles.toastContent}>
+      <div class={styles.toastImage}></div>
+      <span>That'll copy realll nice!</span>
+    </div>
+  );
 
   const handleClick = () => {
-    toast("That'll copy reeeeal nice.", {
+    toast(({ closeToast }) => toastImage, {
       position: toast.POSITION.BOTTOM_LEFT,
       hideProgressBar: true,
       autoClose: 3000,
@@ -45,6 +50,7 @@ export function Sketch(props) {
         href={props.link}
         rel="noreferrer"
         target="_blank"
+        tabIndex="-1"
       >
         <Image
           className={styles.image}
@@ -52,6 +58,7 @@ export function Sketch(props) {
           layout="fill"
           objectFit="cover"
           lazyBoundary="400px"
+          alt=" "
         />
       </a>
       <div className={styles.sketchInfoContainer}>
@@ -61,6 +68,7 @@ export function Sketch(props) {
             href={props.link}
             rel="noreferrer"
             target="_blank"
+            aria-label="Open sketch in Netflix"
           >
             {props.title}
           </a>
@@ -71,6 +79,7 @@ export function Sketch(props) {
               href={props.link}
               rel="noreferrer"
               target="_blank"
+              aria-label="Open sketch in Netflix"
             >
               Sn. {props.season} <span className={styles.bar}>|</span> Ep.{" "}
               {props.episode} <span className={styles.bar}>|</span> {timeStamp}
@@ -78,7 +87,7 @@ export function Sketch(props) {
 
             <CopyToClipboard text={props.link}>
               <div className={styles.copyText}>
-                <button onClick={handleClick}> Copy Link</button>
+                <button onClick={handleClick}>Copy Link</button>
               </div>
             </CopyToClipboard>
           </span>

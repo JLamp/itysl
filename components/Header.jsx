@@ -6,7 +6,11 @@ export function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Image src={logo} priority={true} />
+        <Image
+          src={logo}
+          priority={true}
+          alt="I Think You Should Leave Database"
+        />
       </div>
     </div>
   );
