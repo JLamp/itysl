@@ -4,14 +4,11 @@ import { SketchList } from "../components/SketchList";
 import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home({ sketches }) {
-  function randomEp() {
-    var min = Math.ceil(0);
-    var max = Math.floor(sketches.length);
-    var ep = Math.floor(Math.random() * (max - min) + min);
-    window.open(sketches[ep].properties.Link["url"]);
-  }
+  
   return (
     <div>
     <Head>
@@ -20,13 +17,14 @@ export default function Home({ sketches }) {
       <meta property="og:image" content="/images/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
     </Head>
-    <div className={styles.container}>
+    <div className={styles.container} >
       <RandomButton sketches={sketches}/>
       <Header />
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
       <div className={styles.footer}>Site by <a href={"https://twitter.com/JLampron"}>lamp</a></div>
     </div>
+    <ToastContainer transition={Slide}/>
     </div>
   );
 }
