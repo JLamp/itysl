@@ -3,23 +3,23 @@ import { Header } from "../components/Header";
 import { SketchList } from "../components/SketchList";
 import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
-import Head from "next/head";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet';
 
 export default function Home({ sketches }) {
   
   return (
     <div>
-    <Head>
+    <Helmet>
       <title>I Think You Should Leave Db</title>
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="/images/meta-image.jpg" />
+      <meta property="twitter:image" content="/images/meta-data.jpg" />
       <meta property="og:title" content="I Think You Should Leave Database" />
-      <meta property="og:image" content="/images/meta-image.jpg" />
+      <meta property="og:image" content="/images/meta-data.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
       <meta property="og:description" content="I think it's a good website, and I stand by it." />
-    </Head>
+    </Helmet>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
       <Header />
