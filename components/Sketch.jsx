@@ -29,9 +29,9 @@ export function Sketch(props) {
   const timeStamp = makeTimeStamp();
 
   const toastImage = (
-    <div class={styles.toastContent}>
-      <div class={styles.toastImage}></div>
-      <span>That'll copy realll nice!</span>
+    <div className={styles.toastContent}>
+      <div className={styles.toastImage}></div>
+      <span>That&apos;ll copy realll nice!</span>
     </div>
   );
 
