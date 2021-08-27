@@ -14,9 +14,9 @@ export default function Home({ sketches }) {
     <Helmet>
       <title>I Think You Should Leave Db</title>
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="/images/meta-data.jpg" />
+      <meta property="twitter:image" content="https://i.ibb.co/n6GPwBM/meta-image.jpg" />
       <meta property="og:title" content="I Think You Should Leave Database" />
-      <meta property="og:image" content="/images/meta-data.jpg" />
+      <meta property="og:image" content="https://i.ibb.co/n6GPwBM/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
       <meta property="og:description" content="I think it's a good website, and I stand by it." />
     </Helmet>
