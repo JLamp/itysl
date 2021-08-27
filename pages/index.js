@@ -5,13 +5,13 @@ import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
 export default function Home({ sketches }) {
   
   return (
     <div>
-    <Helmet>
+    <Head>
       <title>I Think You Should Leave Db</title>
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:image" content="https://i.ibb.co/n6GPwBM/meta-image.jpg" />
@@ -19,7 +19,7 @@ export default function Home({ sketches }) {
       <meta property="og:image" content="https://i.ibb.co/n6GPwBM/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
       <meta property="og:description" content="I think it's a good website, and I stand by it." />
-    </Helmet>
+    </Head>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
       <Header />
