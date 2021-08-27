@@ -6,7 +6,7 @@ export function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Image src={logo} />
+        <Image src={logo} priority={true} />
       </div>
     </div>
   );

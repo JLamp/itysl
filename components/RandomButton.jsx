@@ -17,6 +17,7 @@ export function RandomButton({ sketches }) {
           src={random}
           alt="Random Episode Button"
           onClick={randomEp}
+          priority={true}
         />
       </button>
     </div>
