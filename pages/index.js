@@ -13,9 +13,11 @@ export default function Home({ sketches }) {
     <div>
     <Head>
       <title>I Think You Should Leave Db</title>
+      <meta property="twitter:card" content="summary_large_image" />
       <meta property="og:title" content="I Think You Should Leave Database" />
       <meta property="og:image" content="/images/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
+      <meta property="og:description" content="I think it's a good website, and I stand by it." />
     </Head>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
