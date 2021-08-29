@@ -1,12 +1,12 @@
 .card {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   background-color: white;
   border-radius: 8px;
   margin-bottom: 48px;
   transition: all 100ms;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 222px;
 }
 
 .card:hover {
@@ -22,11 +22,9 @@
 }
 
 .header {
-  background-size: cover;
-  background-position: center;
   border-radius: 8px 8px 0 0;
   position: relative;
-  height: 156px;
+  height: 100%;
 }
 
 .image {
@@ -75,6 +73,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 
 .copyIconMobile {

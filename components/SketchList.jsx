@@ -15,7 +15,7 @@ export function SketchList({ sketches, season }) {
           .map((sketch) => (
             <Sketch
               key={sketch.id}
-              image={sketch.properties.Sketch["number"]}
+              image={sketch.properties.image.rich_text[0]["plain_text"]}
               title={sketch.properties.Name.title[0]["plain_text"]}
               season={season}
               episode={sketch.properties.Episode["number"]}
