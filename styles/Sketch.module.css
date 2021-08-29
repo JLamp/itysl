@@ -16,6 +16,12 @@
 
 @media (max-width: 540px) {
   .card:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: none) {
+  .card:hover {
     transform: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }

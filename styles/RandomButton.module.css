@@ -15,7 +15,7 @@
   transform: scale(1.1) skew(1deg);
 }
 
-@media (max-width: 540px) {
+@media (hover: none) {
   .randomButton {
     height: 120px;
     width: 120px;
