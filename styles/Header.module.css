@@ -5,12 +5,16 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   font-style: italic;
 }
 
 .container {
   margin: 48px 0 24px 0;
+  align-items: center;
+}
+
+.sectionContainer {
+  align-items: baseline;
 }
 
 .sectionContainer {
@@ -26,4 +30,10 @@
 
 .logo img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 }

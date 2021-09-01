@@ -13,6 +13,18 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
+input {
+  all: unset;
+  background-color: white;
+  font-style: normal;
+  font-size: 15px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   padding: 0;

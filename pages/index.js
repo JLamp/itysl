@@ -6,9 +6,9 @@ import styles from "../styles/Home.module.css";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from 'next/head';
+import { SketchArray } from "../components/SketchArray"
 
 export default function Home({ sketches }) {
-  
   return (
     <div>
     <Head>
@@ -22,7 +22,7 @@ export default function Home({ sketches }) {
     </Head>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
-      <Header />
+      <Header sketches={sketches}/>
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
       <div className={styles.footer}>Site by <a href={"https://twitter.com/JLampron"}>lamp</a></div>
