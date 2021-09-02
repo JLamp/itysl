@@ -71,7 +71,7 @@ export function Search({ sketches }) {
 
   const emptyResultContent = (
     <div className={styles.emptyResult}>
-      All right you know what? This is dumb. Dump it. Trash it. This one's
+      All right you know what? This is dumb. Dump it. Trash it. This one&apos;s
       garbage.
     </div>
   );
@@ -131,6 +131,7 @@ export function Search({ sketches }) {
           <div className={styles.resultsList}>
             {sketchResults.map((sketch) => (
               <a
+                key={sketch.Title}
                 href={sketch.Link}
                 className={styles.resultItem}
                 rel="noreferrer"
