@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   font-style: italic;
+  flex-wrap: nowrap;
 }
 
 .container {
@@ -28,12 +29,10 @@
   font-size: 14px;
 }
 
-.logo img {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+.logo {
+  margin-right: 16px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+.logo img {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }

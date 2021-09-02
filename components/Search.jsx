@@ -2,12 +2,23 @@ import { Client } from "@notionhq/client";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 import styles from "../styles/Search.module.css";
+import logo from "../public/images/logo.svg";
+import logoMobile from "../public/images/logo-mobile.svg";
+import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 export function Search({ sketches }) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [query, updateQuery] = useState("");
+  const [searchActive, updateSearchActive] = useState(false);
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
+  }
+
+  function onSearchActive() {
+    updateSearchActive(true);
   }
 
   function makeTimeStamp(e) {
@@ -58,8 +69,6 @@ export function Search({ sketches }) {
 
   const sketchResults = results.map((sketch) => sketch.item);
 
-  var placeHolderText = "Search";
-
   const emptyResultContent = (
     <div className={styles.emptyResult}>
       All right you know what? This is dumb. Dump it. Trash it. This one's
@@ -70,49 +79,83 @@ export function Search({ sketches }) {
   function handleBlur() {
     setTimeout(function () {
       updateQuery("");
-    }, 150);
+      console.log("searchActive = ", searchActive);
+      updateSearchActive(false);
+    }, 130);
   }
-  // console.log(sketchArray);
+
+  const PageLogo = (
+    <div className={styles.logoContainer}>
+      <Image
+        src={logo}
+        priority={true}
+        alt="I Think You Should Leave Database"
+      />
+    </div>
+  );
+
+  const MobileLogo = (
+    <div className={styles.logoContainer}>
+      <Image
+        src={logoMobile}
+        priority={true}
+        alt="I Think You Should Leave Database"
+      />
+    </div>
+  );
+
+  const Overlay = <div className={styles.overlay}></div>;
 
   return (
-    <div className={styles.searchContainer} onBlur={handleBlur}>
-      <input
-        className={styles.searchInput}
-        type="search"
-        value={query}
-        onChange={onSearch}
-        placeholder={placeHolderText}
-        style={query.length > 0 ? { borderRadius: "4px 4px 0 0" } : null}
-      />
-      <div className={styles.resultsContainer}>
-        <div
-          className={styles.divider}
-          style={query.length > 0 ? null : { display: "none" }}
+    <div className={styles.pageHeader} onBlur={handleBlur}>
+      {isTabletOrMobile && searchActive
+        ? null
+        : isMobile
+        ? MobileLogo
+        : PageLogo}
+      <div className={styles.searchContainer}>
+        <input
+          className={styles.searchInput}
+          type="search"
+          value={query}
+          onChange={onSearch}
+          onFocus={onSearchActive}
+          placeholder={"Search"}
+          style={query.length > 0 ? { borderRadius: "4px 4px 0 0" } : null}
         />
-        <div className={styles.resultsList}>
-          {sketchResults.map((sketch) => (
-            <a
-              href={sketch.Link}
-              className={styles.resultItem}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <div
-                className={styles.resultImage}
-                style={{ backgroundImage: `url(${sketch.Cover})` }}
-              ></div>
-              <div className={styles.resultData}>
-                <div className={styles.resultTitle}>{sketch.Title}</div>
-                <div className={styles.resultMetadata}>
-                  Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
-                  {sketch.Timestamp}
+        <div className={styles.resultsContainer}>
+          <div
+            className={styles.divider}
+            style={query.length > 0 ? null : { display: "none" }}
+          />
+          <div className={styles.resultsList}>
+            {sketchResults.map((sketch) => (
+              <a
+                href={sketch.Link}
+                className={styles.resultItem}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <div
+                  className={styles.resultImage}
+                  style={{ backgroundImage: `url(${sketch.Cover})` }}
+                ></div>
+                <div className={styles.resultData}>
+                  <div className={styles.resultTitle}>{sketch.Title}</div>
+                  <div className={styles.resultMetadata}>
+                    Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
+                    {sketch.Timestamp}
+                  </div>
                 </div>
-              </div>
-            </a>
-          ))}
-          {query.length > 2 && results.length === 0 ? emptyResultContent : null}
+              </a>
+            ))}
+            {query.length > 2 && results.length === 0
+              ? emptyResultContent
+              : null}
+          </div>
         </div>
       </div>
+      {searchActive ? Overlay : null}
     </div>
   );
 }
