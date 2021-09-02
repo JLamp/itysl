@@ -1,11 +1,10 @@
 import { Client } from "@notionhq/client";
-import { Header } from "../components/Header";
-import { SketchList } from "../components/SketchList";
 import { RandomButton } from "../components/RandomButton"
 import styles from "../styles/Home.module.css";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from 'next/head';
+import { Content } from "../components/Content";
 
 export default function Home({ sketches }) {
   return (
@@ -21,9 +20,7 @@ export default function Home({ sketches }) {
     </Head>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
-      <Header sketches={sketches}/>
-      <SketchList sketches={sketches} season={1}/>
-      <SketchList sketches={sketches} season={2}/>
+      <Content sketches={sketches}/>
       <div className={styles.footer}>Site by <a href={"https://twitter.com/JLampron"}>lamp</a></div>
     </div>
     <ToastContainer transition={Slide} />
