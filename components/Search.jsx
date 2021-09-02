@@ -5,11 +5,8 @@ import styles from "../styles/Search.module.css";
 import logo from "../public/images/logo.svg";
 import logoMobile from "../public/images/logo-mobile.svg";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 export function Search({ sketches }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
 
@@ -79,7 +76,6 @@ export function Search({ sketches }) {
   function handleBlur() {
     setTimeout(function () {
       updateQuery("");
-      console.log("searchActive = ", searchActive);
       updateSearchActive(false);
     }, 130);
   }
@@ -108,11 +104,9 @@ export function Search({ sketches }) {
 
   return (
     <div className={styles.pageHeader} onBlur={handleBlur}>
-      {isTabletOrMobile && searchActive
-        ? null
-        : isMobile
-        ? MobileLogo
-        : PageLogo}
+      <div className={styles.logoContainer}>
+        <div className={styles.logo}></div>
+      </div>
       <div className={styles.searchContainer}>
         <input
           className={styles.searchInput}

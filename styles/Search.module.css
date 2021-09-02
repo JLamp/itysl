@@ -18,6 +18,8 @@
 
 .logo {
   margin-right: 48px;
+  content: url("../assets/logo.svg");
+  width: 100%;
 }
 
 .searchContainer {
@@ -201,5 +203,20 @@
 
   .resultMetadata {
     font-size: 14px;
+  }
+
+  .resultItem:hover,
+  .resultItem:focus {
+    background-color: none;
+  }
+
+  .resultItem:active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 540px) {
+  .logo {
+    content: url("../assets/logo-mobile.svg");
   }
 }
