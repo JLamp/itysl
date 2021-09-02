@@ -18,6 +18,7 @@ export default function Home({ sketches }) {
       <meta property="og:image" content="https://i.ibb.co/n6GPwBM/meta-image.jpg" />
       <meta property="og:description" content="I think it's a good website, and I stand by it."/>
       <meta property="og:description" content="I think it's a good website, and I stand by it." />
+      <script defer data-domain="itylsdb.com" src="https://plausible.io/js/plausible.js"></script>
     </Head>
     <div className={styles.container} >
       <RandomButton sketches={sketches}/>
