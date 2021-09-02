@@ -5,23 +5,32 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   font-style: italic;
+  flex-wrap: nowrap;
 }
 
 .container {
   margin: 48px 0 24px 0;
+  align-items: center;
+}
+
+.sectionContainer {
+  align-items: baseline;
 }
 
 .sectionContainer {
   font-family: cooper-black-std, serif;
-  margin: 24px 0;
+  margin-bottom: 24px;
   font-size: 24px;
   color: white;
 }
 
 .jump {
   font-size: 14px;
+}
+
+.logo {
+  margin-right: 16px;
 }
 
 .logo img {

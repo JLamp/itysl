@@ -1,6 +1,6 @@
 import styles from "../styles/Header.module.css";
 
-export function SectionHeader({ season, onClick }) {
+export function SectionHeader({ season }) {
   const HeaderText = "Season " + season;
   const seasonID = "season" + season.toString();
   const otherSeason = (season === 1 ? 2 : 1).toString();

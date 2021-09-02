@@ -80,7 +80,7 @@ export function Sketch(props) {
               target="_blank"
               aria-label="Open sketch in Netflix"
             >
-              Sn. {props.season} <span className={styles.bar}>|</span> Ep.{" "}
+              Sn. {props.season} <span className={styles.bar}>|</span> Ep.
               {props.episode} <span className={styles.bar}>|</span> {timeStamp}
             </a>
 
