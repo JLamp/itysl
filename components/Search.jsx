@@ -5,10 +5,12 @@ import styles from "../styles/Search.module.css";
 import logo from "../public/images/logo.svg";
 import logoMobile from "../public/images/logo-mobile.svg";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 export function Search({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
@@ -100,13 +102,17 @@ export function Search({ sketches }) {
     </div>
   );
 
+  const Logo = (
+    <div className={styles.logoContainer}>
+      <div className={styles.logo}></div>
+    </div>
+  );
+
   const Overlay = <div className={styles.overlay}></div>;
 
   return (
     <div className={styles.pageHeader} onBlur={handleBlur}>
-      <div className={styles.logoContainer}>
-        <div className={styles.logo}></div>
-      </div>
+      {isTabletOrMobile && searchActive ? null : Logo}
       <div className={styles.searchContainer}>
         <input
           className={styles.searchInput}
