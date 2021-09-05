@@ -1,29 +1,22 @@
 import { Client } from "@notionhq/client";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
-import styles from "../styles/Search.module.css";
-import { useMediaQuery } from "react-responsive";
-import { MobileSearch } from "../components/MobileSearch";
-import { useWindowSize } from "../hooks/useWindowSize";
+import styles from "../styles/MobileSearch.module.css";
+import Image from "next/image";
+import clearIcon from "../public/images/cancel.svg";
+import backIcon from "../public/images/back-icon.svg";
+import { useLockBodyScroll } from "../hooks/useLockBodyScroll";
 
-export function Search({ sketches }) {
+export function MobileSearch({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
 
-  const isMobile = useWindowSize().width < 748 ? true : false;
-  const windowSize = useWindowSize();
-  console.log("isMobile = " + isMobile);
-  console.log(windowSize);
+  const lockBody = useLockBodyScroll();
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  isTabletOrMobile;
+  searchActive && lockBody;
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
-  }
-
-  function onSearchActive() {
-    updateSearchActive(true);
   }
 
   function makeTimeStamp(e) {
@@ -72,7 +65,8 @@ export function Search({ sketches }) {
 
   const results = fuse.search(" " + query);
 
-  const sketchResults = results.map((sketch) => sketch.item);
+  const sketchResults =
+    query.length > 0 ? results.map((sketch) => sketch.item) : sketchArray;
 
   const emptyResultContent = (
     <div className={styles.emptyResult}>
@@ -81,69 +75,76 @@ export function Search({ sketches }) {
     </div>
   );
 
-  function handleBlur() {
-    setTimeout(function () {
-      updateQuery("");
-      updateSearchActive(false);
-    }, 130);
+  function clearSearch() {
+    updateQuery("");
   }
 
-  const Logo = (
-    <div className={styles.logoContainer}>
-      <div className={styles.logo}></div>
-    </div>
+  function handleHideShow() {
+    searchActive ? updateSearchActive(false) : updateSearchActive(true);
+  }
+
+  const SearchButton = (
+    <button className={styles.mobileSearchButton} onClick={handleHideShow} />
   );
 
-  return (
-    <div className={styles.pageHeader} onBlur={handleBlur}>
-      {Logo}
-      {isMobile ? (
-        <MobileSearch sketches={sketches} />
-      ) : (
-        <div className={styles.searchContainer}>
+  const MobileSearch = (
+    <div className={styles.mobileSearchContainer}>
+      <div className={styles.searchContainer}>
+        <div className={styles.inputContainer}>
+          <button className={styles.backButton} onClick={handleHideShow}>
+            <Image src={backIcon} width={16} height={16} />
+          </button>
           <input
             className={styles.searchInput}
             type="search"
             value={query}
             onChange={onSearch}
-            onFocus={onSearchActive}
             placeholder={"Search"}
-            style={query.length > 0 ? { borderRadius: "4px 4px 0 0" } : null}
           />
-          <div className={styles.resultsContainer}>
-            <div
-              className={styles.divider}
-              style={query.length > 0 ? null : { display: "none" }}
-            />
-            <div className={styles.resultsList}>
-              {sketchResults.map((sketch) => (
-                <a
-                  key={sketch.Title}
-                  href={sketch.Link}
-                  className={styles.resultItem}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <div
-                    className={styles.resultImage}
-                    style={{ backgroundImage: `url(${sketch.Cover})` }}
-                  ></div>
-                  <div className={styles.resultData}>
-                    <div className={styles.resultTitle}>{sketch.Title}</div>
-                    <div className={styles.resultMetadata}>
-                      Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
-                      {sketch.Timestamp}
-                    </div>
+          <button
+            className={styles.clearButton}
+            onClick={clearSearch}
+            style={query.length > 0 ? null : { display: "none" }}
+          >
+            <Image src={clearIcon} width={16} height={16} />
+          </button>
+        </div>
+        <div className={styles.resultsContainer}>
+          <div className={styles.resultsList}>
+            {sketchResults.map((sketch) => (
+              <a
+                key={sketch.Title}
+                href={sketch.Link}
+                className={styles.resultItem}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <div
+                  className={styles.resultImage}
+                  style={{ backgroundImage: `url(${sketch.Cover})` }}
+                ></div>
+                <div className={styles.resultData}>
+                  <div className={styles.resultTitle}>{sketch.Title}</div>
+                  <div className={styles.resultMetadata}>
+                    Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
+                    {sketch.Timestamp}
                   </div>
-                </a>
-              ))}
-              {query.length > 2 && results.length === 0
-                ? emptyResultContent
-                : null}
-            </div>
+                </div>
+              </a>
+            ))}
+            {query.length > 2 && results.length === 0
+              ? emptyResultContent
+              : null}
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      {SearchButton}
+      {searchActive && MobileSearch}
     </div>
   );
 }

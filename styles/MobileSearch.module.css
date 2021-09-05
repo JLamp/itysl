@@ -1,0 +1,129 @@
+.mobileSearchButton {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid white;
+  background: center no-repeat url("/images/search-icon.svg"),
+    rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.mobileSearchContainer {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  overflow: scroll;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  z-index: 2001;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  position: sticky;
+  top: 0;
+}
+
+.backButton,
+.clearButton {
+  width: 48px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.clearButton {
+  opacity: 0.4;
+}
+.searchInput {
+  padding: 16px 8px;
+  width: 100%;
+  background: none;
+}
+
+.resultsContainer {
+  z-index: 1000;
+  background-color: white;
+  border-radius: 4px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  margin-top: 8px;
+  overflow: scroll;
+  height: 70vh;
+}
+
+.resultsList {
+  list-style: none;
+  font-style: normal;
+  width: auto;
+  height: auto;
+  overflow: scroll;
+  border-radius: 0 0 4px 4px;
+}
+
+.resultItem {
+  display: flex;
+  padding: 8px 8px;
+  align-items: center;
+}
+
+.resultData {
+  overflow: hidden;
+}
+
+.resultTitle {
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.resultMetadata {
+  font-size: 12px;
+  color: #4a4a51;
+  padding-top: 4px;
+}
+
+.resultImage {
+  height: 52px;
+  width: 88px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.emptyResult {
+  padding: 16px;
+  font-size: 12px;
+  font-style: italic;
+  color: #4a4a51;
+}
+
+/* .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+} */
+
+@media (hover: none) {
+  .searchInput {
+    font-size: 20px;
+  }
+}
