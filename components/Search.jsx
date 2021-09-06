@@ -10,7 +10,7 @@ export function Search({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
 
-  const isMobile = useWindowSize().width < 748 ? true : false;
+  const isMobile = useWindowSize().width < 768 ? true : false;
   const windowSize = useWindowSize();
   console.log("isMobile = " + isMobile);
   console.log(windowSize);
@@ -146,22 +146,4 @@ export function Search({ sketches }) {
       )}
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const notion = new Client({ auth: process.env.NOTION_API_KEY });
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID,
-    sorts: [
-      {
-        property: "Sketch",
-        direction: "ascending",
-      },
-    ],
-  });
-  return {
-    props: {
-      sketches: response.results,
-    },
-  };
 }

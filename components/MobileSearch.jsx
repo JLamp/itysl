@@ -1,19 +1,13 @@
-import { Client } from "@notionhq/client";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 import styles from "../styles/MobileSearch.module.css";
 import Image from "next/image";
 import clearIcon from "../public/images/cancel.svg";
 import backIcon from "../public/images/back-icon.svg";
-import { useLockBodyScroll } from "../hooks/useLockBodyScroll";
 
 export function MobileSearch({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
-
-  const lockBody = useLockBodyScroll();
-
-  searchActive && lockBody;
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
@@ -51,8 +45,15 @@ export function MobileSearch({ sketches }) {
       Timestamp: makeTimeStamp(sketch.properties.Link["url"]),
       Link: sketch.properties.Link["url"],
       Transcript: sketch.properties.Transcript.rich_text[0]["plain_text"],
+      AVRanking: sketch.properties.AVRanking["number"],
     })
   );
+
+  console.log(sketchArray);
+
+  const sortedArray = sketchArray.sort(function (a, b) {
+    return a.AVRanking - b.AVRanking;
+  });
 
   const fuse = new Fuse(sketchArray, {
     keys: ["Title", "Transcript"],
@@ -60,13 +61,15 @@ export function MobileSearch({ sketches }) {
     minMatchCharLength: 3,
     ignoreFieldNorm: true,
     ignoreLocation: true,
-    threshold: 0.02,
+    threshold: 0,
   });
 
   const results = fuse.search(" " + query);
 
+  console.log(results);
+
   const sketchResults =
-    query.length > 0 ? results.map((sketch) => sketch.item) : sketchArray;
+    query.length > 0 ? results.map((sketch) => sketch.item) : sortedArray;
 
   const emptyResultContent = (
     <div className={styles.emptyResult}>
@@ -147,22 +150,4 @@ export function MobileSearch({ sketches }) {
       {searchActive && MobileSearch}
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const notion = new Client({ auth: process.env.NOTION_API_KEY });
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID,
-    sorts: [
-      {
-        property: "Sketch",
-        direction: "ascending",
-      },
-    ],
-  });
-  return {
-    props: {
-      sketches: response.results,
-    },
-  };
 }

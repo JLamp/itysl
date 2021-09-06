@@ -10,15 +10,13 @@
 }
 
 .mobileSearchContainer {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
+  background: white;
   position: fixed;
   overflow: scroll;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 16px;
   z-index: 2001;
 }
 
@@ -27,9 +25,9 @@
   flex-direction: row;
   width: 100%;
   background-color: white;
-  border-radius: 4px;
   position: sticky;
   top: 0;
+  border-bottom: 1px solid #7b7b87;
 }
 
 .backButton,
@@ -55,11 +53,7 @@
 .resultsContainer {
   z-index: 1000;
   background-color: white;
-  border-radius: 4px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  margin-top: 8px;
   overflow: scroll;
-  height: 70vh;
 }
 
 .resultsList {
@@ -69,6 +63,7 @@
   height: auto;
   overflow: scroll;
   border-radius: 0 0 4px 4px;
+  padding-top: 8px;
 }
 
 .resultItem {
@@ -106,7 +101,8 @@
 
 .emptyResult {
   padding: 16px;
-  font-size: 12px;
+  font-size: 16px;
+  line-height: 1.5;
   font-style: italic;
   color: #4a4a51;
 }

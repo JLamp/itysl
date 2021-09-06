@@ -118,6 +118,9 @@
 }
 
 @media (max-width: 540px) {
+  .card {
+    margin-bottom: 16px;
+  }
   .copyText {
     display: none;
   }
