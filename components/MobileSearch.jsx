@@ -4,6 +4,7 @@ import styles from "../styles/MobileSearch.module.css";
 import Image from "next/image";
 import clearIcon from "../public/images/cancel.svg";
 import backIcon from "../public/images/back-icon.svg";
+import { MakeTimeStamp } from "./MakeTimeStamp";
 
 export function MobileSearch({ sketches }) {
   const [query, updateQuery] = useState("");
@@ -11,24 +12,6 @@ export function MobileSearch({ sketches }) {
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
-  }
-
-  function makeTimeStamp(e) {
-    var timeInt = parseInt(e.split("=").pop());
-    var minutes = Math.floor(timeInt / 60);
-    var seconds = timeInt - minutes * 60;
-    if (minutes < 10) {
-      minutes = "0" + minutes.toString();
-    } else {
-      minutes = minutes.toString();
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds.toString();
-    } else {
-      seconds = seconds.toString();
-    }
-    var timeStamp = minutes + ":" + seconds;
-    return timeStamp;
   }
 
   const sketchArray = [];
@@ -42,16 +25,14 @@ export function MobileSearch({ sketches }) {
       Title: " " + sketch.properties.Name.title[0]["plain_text"],
       Season: sketch.properties.Season["number"],
       Episode: sketch.properties.Episode["number"],
-      Timestamp: makeTimeStamp(sketch.properties.Link["url"]),
+      TimeStamp: MakeTimeStamp(sketch.properties.Link["url"]),
       Link: sketch.properties.Link["url"],
       Transcript: sketch.properties.Transcript.rich_text[0]["plain_text"],
       AVRanking: sketch.properties.AVRanking["number"],
     })
   );
 
-  console.log(sketchArray);
-
-  const sortedArray = sketchArray.sort(function (a, b) {
+  const sortedArray = sketchArray.sort(function(a, b) {
     return a.AVRanking - b.AVRanking;
   });
 
@@ -61,7 +42,7 @@ export function MobileSearch({ sketches }) {
     minMatchCharLength: 3,
     ignoreFieldNorm: true,
     ignoreLocation: true,
-    threshold: 0,
+    threshold: 0.3,
   });
 
   const results = fuse.search(" " + query);
@@ -130,7 +111,7 @@ export function MobileSearch({ sketches }) {
                   <div className={styles.resultTitle}>{sketch.Title}</div>
                   <div className={styles.resultMetadata}>
                     Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
-                    {sketch.Timestamp}
+                    {sketch.TimeStamp}
                   </div>
                 </div>
               </a>

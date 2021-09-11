@@ -1,5 +1,4 @@
-.container,
-.sectionContainer {
+.container {
   font-weight: 400;
   font-style: normal;
   width: 100%;
@@ -12,21 +11,6 @@
 .container {
   margin: 48px 0 24px 0;
   align-items: center;
-}
-
-.sectionContainer {
-  align-items: baseline;
-}
-
-.sectionContainer {
-  font-family: cooper-black-std, serif;
-  margin-bottom: 24px;
-  font-size: 24px;
-  color: white;
-}
-
-.jump {
-  font-size: 14px;
 }
 
 .logo {

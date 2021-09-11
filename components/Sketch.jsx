@@ -1,37 +1,153 @@
-import styles from "../styles/Sketch.module.css";
 import Image from "next/image";
 import copyIcon from "../public/images/link-icon.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { MakeTimeStamp } from "./MakeTimeStamp";
+import styled from "styled-components";
+import { device } from "../constants/Devices.jsx";
+import { useState } from "react";
+
+const Card = styled.div`
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  transition: all 100ms;
+  height: 222px;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+  }
+
+  @media (hover: none) {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media ${device.tablet} {
+    margin-bottom: 48px;
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+`;
+
+const Header = styled.a`
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  height: 100%;
+`;
+
+const SketchImage = styled(Image)`
+  border-radius: 8px 8px 0 0;
+`;
+
+const SketchInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+`;
+
+const SketchInfo = styled.div`
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Title = styled.a`
+  font-size: 15px;
+`;
+
+const MetaDataContainer = styled.div`
+  font-size: 12px;
+  margin-top: 8px;
+  color: #4a4a51;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+`;
+
+const BarContainer = styled.span`
+  color: #7b7b87;
+`;
+
+const Bar = <BarContainer>|</BarContainer>;
+
+const CopyText = styled.button`
+  display: none;
+  @media ${device.tablet} {
+    display: block;
+    opacity: ${({ isHovered }) => (isHovered ? 1 : 0)};
+    transition: all 110ms;
+    &:hover {
+      color: black;
+    }
+  }
+`;
+
+const CopyIcon = styled.button`
+  width: 16px;
+  height: 16px;
+  position: relative;
+  object-fit: contain;
+  margin-right: 16px;
+  opacity: 30%;
+  transition: all 110ms;
+
+  &:hover {
+    opacity: 60%;
+  }
+
+  &:active {
+    opacity: 80%;
+  }
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+const ToastContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ToastImage = styled.div`
+  width: 56px;
+  height: 56px;
+  position: relative;
+  object-fit: contain;
+  background-image: url("images/toast-image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 8px;
+`;
 
 export function Sketch(props) {
+  const [isHovered, updateHover] = useState(false);
+
+  function handleMouseEnter() {
+    updateHover(true);
+  }
+
+  function handleMouseLeave() {
+    updateHover(false);
+  }
   const coverImage = "/images/covers/" + props.image + ".jpg";
 
-  function makeTimeStamp() {
-    var timeInt = parseInt(props.link.split("=").pop());
-    var minutes = Math.floor(timeInt / 60);
-    var seconds = timeInt - minutes * 60;
-    if (minutes < 10) {
-      minutes = "0" + minutes.toString();
-    } else {
-      minutes = minutes.toString();
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds.toString();
-    } else {
-      seconds = seconds.toString();
-    }
-    var timeStamp = minutes + ":" + seconds;
-    return timeStamp;
-  }
-  const timeStamp = makeTimeStamp();
-
   const toastContent = (
-    <div className={styles.toastContent}>
-      <div className={styles.toastImage}></div>
+    <ToastContent>
+      <ToastImage />
       <span>That&apos;ll copy realll nice!</span>
-    </div>
+    </ToastContent>
   );
 
   const handleClick = () => {
@@ -42,61 +158,54 @@ export function Sketch(props) {
     });
   };
 
+  const TimeStamp = MakeTimeStamp(props.link);
+
   return (
-    <div className={styles.card}>
-      <a
-        className={styles.header}
-        href={props.link}
-        rel="noreferrer"
-        target="_blank"
-        tabIndex="-1"
-      >
-        <Image
-          className={styles.image}
+    <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Header href={props.link} rel="noreferrer" target="_blank" tabIndex="-1">
+        <SketchImage
           src={coverImage}
           layout="fill"
           objectFit="cover"
           lazyBoundary="400px"
           alt=" "
         />
-      </a>
-      <div className={styles.sketchInfoContainer}>
-        <div className={styles.sketchInfo}>
-          <a
-            className={styles.title}
+      </Header>
+      <SketchInfoContainer>
+        <SketchInfo>
+          <Title
             href={props.link}
             rel="noreferrer"
             target="_blank"
-            aria-label="Open sketch in Netflix"
+            aria-label="Open in Netflix"
           >
             {props.title}
-          </a>
+          </Title>
 
-          <span className={styles.metadata}>
+          <MetaDataContainer>
             <a
-              className={styles.metaText}
               href={props.link}
               rel="noreferrer"
               target="_blank"
-              aria-label="Open sketch in Netflix"
+              aria-label="Open in Netflix"
             >
-              Sn. {props.season} <span className={styles.bar}>|</span> Ep.
-              {props.episode} <span className={styles.bar}>|</span> {timeStamp}
+              Sn. {props.season} {Bar} Ep.
+              {props.episode} {Bar} {TimeStamp}
             </a>
 
             <CopyToClipboard text={props.link}>
-              <div className={styles.copyText}>
-                <button onClick={handleClick}>Copy Link</button>
-              </div>
+              <CopyText isHovered={isHovered} onClick={handleClick}>
+                Copy Link
+              </CopyText>
             </CopyToClipboard>
-          </span>
-        </div>
+          </MetaDataContainer>
+        </SketchInfo>
         <CopyToClipboard text={props.link}>
-          <button className={styles.copyIconMobile} onClick={handleClick}>
+          <CopyIcon onClick={handleClick}>
             <Image src={copyIcon} layout="fill" />
-          </button>
+          </CopyIcon>
         </CopyToClipboard>
-      </div>
-    </div>
+      </SketchInfoContainer>
+    </Card>
   );
 }

@@ -1,15 +1,31 @@
 import { Sketch } from "../components/Sketch";
-import styles from "../styles/Grid.module.css";
 import { SectionHeader } from "../components/SectionHeader";
+import styled from "styled-components";
+import { device } from "../constants/Devices";
 
 export function SketchList({ sketches, season }) {
+  const Grid = styled.div`
+    display: grid;
+    grid-column-gap: 48px;
+    width: 100%;
+    grid-template-columns: 1fr;
+
+    @media ${device.tablet} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media ${device.laptop} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  `;
+
   return (
     <div style={{ width: "100%" }}>
       <SectionHeader
         season={season}
         onClick={() => setshow(!show)}
       ></SectionHeader>
-      <div className={styles.grid}>
+      <Grid>
         {sketches
           .filter((sketch) => sketch.properties.Season["number"] === season)
           .map((sketch) => (
@@ -22,7 +38,7 @@ export function SketchList({ sketches, season }) {
               link={sketch.properties.Link["url"]}
             />
           ))}
-      </div>
+      </Grid>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import { Client } from "@notionhq/client";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 import styles from "../styles/Search.module.css";
 import { useMediaQuery } from "react-responsive";
 import { MobileSearch } from "../components/MobileSearch";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { MakeTimeStamp } from "./MakeTimeStamp";
 
 export function Search({ sketches }) {
   const [query, updateQuery] = useState("");
@@ -26,24 +26,6 @@ export function Search({ sketches }) {
     updateSearchActive(true);
   }
 
-  function makeTimeStamp(e) {
-    var timeInt = parseInt(e.split("=").pop());
-    var minutes = Math.floor(timeInt / 60);
-    var seconds = timeInt - minutes * 60;
-    if (minutes < 10) {
-      minutes = "0" + minutes.toString();
-    } else {
-      minutes = minutes.toString();
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds.toString();
-    } else {
-      seconds = seconds.toString();
-    }
-    var timeStamp = minutes + ":" + seconds;
-    return timeStamp;
-  }
-
   const sketchArray = [];
 
   sketches.map((sketch) =>
@@ -55,7 +37,7 @@ export function Search({ sketches }) {
       Title: " " + sketch.properties.Name.title[0]["plain_text"],
       Season: sketch.properties.Season["number"],
       Episode: sketch.properties.Episode["number"],
-      Timestamp: makeTimeStamp(sketch.properties.Link["url"]),
+      Timestamp: MakeTimeStamp(sketch.properties.Link["url"]),
       Link: sketch.properties.Link["url"],
       Transcript: sketch.properties.Transcript.rich_text[0]["plain_text"],
     })
@@ -82,7 +64,7 @@ export function Search({ sketches }) {
   );
 
   function handleBlur() {
-    setTimeout(function () {
+    setTimeout(function() {
       updateQuery("");
       updateSearchActive(false);
     }, 130);

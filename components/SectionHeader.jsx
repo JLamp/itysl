@@ -1,4 +1,23 @@
-import styles from "../styles/Header.module.css";
+import styled from "styled-components";
+
+const SectionHeaderWrapper = styled.div`
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  font-family: cooper-black-std, serif;
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: white;
+`;
+
+const Jump = styled.a`
+  font-size: 14px;
+`;
 
 export function SectionHeader({ season }) {
   const HeaderText = "Season " + season;
@@ -7,11 +26,11 @@ export function SectionHeader({ season }) {
   const otherSeasonID = "#season" + otherSeason;
   const arrow = season === 1 ? "↓" : "↑";
   return (
-    <div className={styles.sectionContainer} id={seasonID}>
+    <SectionHeaderWrapper id={seasonID}>
       <span>{HeaderText}</span>
-      <a className={styles.jump} href={otherSeasonID}>
+      <Jump href={otherSeasonID}>
         {arrow} Jump to Season {otherSeason}
-      </a>
-    </div>
+      </Jump>
+    </SectionHeaderWrapper>
   );
 }
