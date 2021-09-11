@@ -2,6 +2,7 @@ import Image from "next/image";
 import random from "../public/images/Random.png";
 import styled from "styled-components";
 import useSound from "use-sound";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 const RandomButtonButton = styled.button`
   position: fixed;
@@ -36,6 +37,8 @@ const RandomButtonButton = styled.button`
 `;
 
 export function RandomButton({ sketches }) {
+  const isMobile = useWindowSize().width < 768 ? true : false;
+
   function randomEp() {
     var min = Math.ceil(0);
     var max = Math.floor(sketches.length);
@@ -46,7 +49,7 @@ export function RandomButton({ sketches }) {
   const [playSound] = useSound("/sounds/random.mp3");
 
   return (
-    <RandomButtonButton onClick={(randomEp, playSound)}>
+    <RandomButtonButton onClick={(randomEp, isMobile ? null : playSound)}>
       <Image
         src={random}
         alt="Random Episode Button"

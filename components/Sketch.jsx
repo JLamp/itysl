@@ -25,6 +25,9 @@ const Card = styled.div`
   @media (hover: none) {
     transform: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    &:hover {
+      transform: none;
+    }
   }
 
   @media ${device.tablet} {

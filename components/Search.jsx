@@ -1,22 +1,16 @@
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 import styles from "../styles/Search.module.css";
-import { useMediaQuery } from "react-responsive";
 import { MobileSearch } from "../components/MobileSearch";
 import { useWindowSize } from "../hooks/useWindowSize";
 import { MakeTimeStamp } from "./MakeTimeStamp";
+import { device } from "../constants/Devices";
 
 export function Search({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
 
   const isMobile = useWindowSize().width < 768 ? true : false;
-  const windowSize = useWindowSize();
-  console.log("isMobile = " + isMobile);
-  console.log(windowSize);
-
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  isTabletOrMobile;
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value);
