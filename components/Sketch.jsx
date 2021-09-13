@@ -149,7 +149,9 @@ export function Sketch(props) {
   const toastContent = (
     <ToastContent>
       <ToastImage />
-      <span>That&apos;ll copy realll nice!</span>
+      <span>
+        That&apos;ll copy <i>reallly</i> nice!
+      </span>
     </ToastContent>
   );
 
