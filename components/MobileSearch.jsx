@@ -42,7 +42,7 @@ export function MobileSearch({ sketches }) {
     minMatchCharLength: 3,
     ignoreFieldNorm: true,
     ignoreLocation: true,
-    threshold: 0.3,
+    threshold: 0.2,
   });
 
   const results = fuse.search(" " + query);
