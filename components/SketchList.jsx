@@ -27,6 +27,9 @@ export function SketchList({ sketches, season }) {
       ></SectionHeader>
       <Grid>
         {sketches
+          .filter(
+            (sketch) => sketch.properties.Draft.select["name"] === "false"
+          )
           .filter((sketch) => sketch.properties.Season["number"] === season)
           .map((sketch) => (
             <Sketch
