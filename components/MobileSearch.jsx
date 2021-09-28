@@ -6,6 +6,18 @@ import clearIcon from "../public/images/cancel.svg";
 import backIcon from "../public/images/back-icon.svg";
 import { MakeTimeStamp } from "./MakeTimeStamp";
 
+function Metadata({ season, episode, timestamp }) {
+  const METADATA =
+    season > 0 ? (
+      <>
+        Sn. {season} | Ep. {episode} | {timestamp}{" "}
+      </>
+    ) : (
+      <>The Characters | {timestamp} </>
+    );
+  return <>{METADATA}</>;
+}
+
 export function MobileSearch({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
@@ -25,7 +37,7 @@ export function MobileSearch({ sketches }) {
       Title: " " + sketch.properties.Name.title[0]["plain_text"],
       Season: sketch.properties.Season["number"],
       Episode: sketch.properties.Episode["number"],
-      TimeStamp: MakeTimeStamp(sketch.properties.Link["url"]),
+      Timestamp: MakeTimeStamp(sketch.properties.Link["url"]),
       Link: sketch.properties.Link["url"],
       Transcript: sketch.properties.Transcript.rich_text[0]["plain_text"],
       AVRanking: sketch.properties.AVRanking["number"],
@@ -110,8 +122,11 @@ export function MobileSearch({ sketches }) {
                 <div className={styles.resultData}>
                   <div className={styles.resultTitle}>{sketch.Title}</div>
                   <div className={styles.resultMetadata}>
-                    Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
-                    {sketch.TimeStamp}
+                    <Metadata
+                      season={sketch.Season}
+                      episode={sketch.Episode}
+                      timestamp={sketch.Timestamp}
+                    />
                   </div>
                 </div>
               </a>

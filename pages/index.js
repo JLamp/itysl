@@ -54,6 +54,7 @@ export default function Home({ sketches }) {
       <Search sketches={sketches}/>
       <SketchList sketches={sketches} season={1}/>
       <SketchList sketches={sketches} season={2}/>
+      <SketchList sketches={sketches} season={0}/>
       <Footer>Site by <a href={"https://twitter.com/JLampron"}>lamp</a></Footer>
     </Container>
     <ToastContainer transition={Slide} />

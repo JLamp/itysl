@@ -164,6 +164,19 @@ export function Sketch(props) {
   };
 
   const TimeStamp = MakeTimeStamp(props.link);
+  console.log(props.season);
+
+  const Metadata =
+    props.season !== 0 ? (
+      <>
+        Sn. {props.season} {Bar} Ep.
+        {props.episode} {Bar} {TimeStamp}
+      </>
+    ) : (
+      <>
+        The Characters {Bar} {TimeStamp}
+      </>
+    );
 
   return (
     <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -194,8 +207,7 @@ export function Sketch(props) {
               target="_blank"
               aria-label="Open in Netflix"
             >
-              Sn. {props.season} {Bar} Ep.
-              {props.episode} {Bar} {TimeStamp}
+              {Metadata}
             </a>
 
             <CopyToClipboard text={props.link}>

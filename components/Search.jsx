@@ -6,6 +6,18 @@ import { useWindowSize } from "../hooks/useWindowSize";
 import { MakeTimeStamp } from "./MakeTimeStamp";
 import { device } from "../constants/Devices";
 
+function Metadata({ season, episode, timestamp }) {
+  const METADATA =
+    season > 0 ? (
+      <>
+        Sn. {season} | Ep. {episode} | {timestamp}{" "}
+      </>
+    ) : (
+      <>The Characters | {timestamp} </>
+    );
+  return <>{METADATA}</>;
+}
+
 export function Search({ sketches }) {
   const [query, updateQuery] = useState("");
   const [searchActive, updateSearchActive] = useState(false);
@@ -107,8 +119,11 @@ export function Search({ sketches }) {
                   <div className={styles.resultData}>
                     <div className={styles.resultTitle}>{sketch.Title}</div>
                     <div className={styles.resultMetadata}>
-                      Sn. {sketch.Season} | Ep. {sketch.Episode} |{" "}
-                      {sketch.Timestamp}
+                      <Metadata
+                        season={sketch.Season}
+                        episode={sketch.Episode}
+                        timestamp={sketch.Timestamp}
+                      />
                     </div>
                   </div>
                 </a>

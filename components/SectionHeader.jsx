@@ -20,7 +20,7 @@ const Jump = styled.a`
 `;
 
 export function SectionHeader({ season }) {
-  const HeaderText = "Season " + season;
+  const HeaderText = season !== 0 ? "Season " + season : "The Characters";
   const seasonID = "season" + season.toString();
   const otherSeason = (season === 1 ? 2 : 1).toString();
   const otherSeasonID = "#season" + otherSeason;
