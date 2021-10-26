@@ -196,6 +196,7 @@ export function Sketch(props) {
             rel="noreferrer"
             target="_blank"
             aria-label="Open in Netflix"
+            onClick="fathom.trackGoal('K4Z6LC9W', 0);"
           >
             {props.title}
           </Title>
@@ -206,6 +207,7 @@ export function Sketch(props) {
               rel="noreferrer"
               target="_blank"
               aria-label="Open in Netflix"
+              onClick="fathom.trackGoal('K4Z6LC9W', 0);"
             >
               {Metadata}
             </a>
