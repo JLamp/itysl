@@ -7,6 +7,7 @@ import { MakeTimeStamp } from "./MakeTimeStamp";
 import styled from "styled-components";
 import { device } from "../constants/Devices.jsx";
 import { useState } from "react";
+import Link from "next/link";
 
 const Card = styled.div`
   margin-bottom: 16px;
@@ -134,7 +135,7 @@ const ToastImage = styled.div`
   margin-right: 8px;
 `;
 
-export function Sketch({ episode, image, link, season, title }) {
+export function Sketch({ episode, image, link, season, title, slug }) {
   const [isHovered, updateHover] = useState(false);
 
   function handleMouseEnter() {
@@ -191,25 +192,27 @@ export function Sketch({ episode, image, link, season, title }) {
       <SketchInfoContainer>
         <SketchInfo>
           <Title
-            href={link}
+            href={`/${encodeURIComponent(slug)}`}
             rel="noreferrer"
             target="_blank"
             aria-label="Open in Netflix"
             onClick="fathom.trackGoal('K4Z6LC9W', 0);"
+            replace
           >
             {title}
           </Title>
 
           <MetaDataContainer>
-            <a
-              href={link}
+            <Link
+              href={`/${encodeURIComponent(slug)}`}
               rel="noreferrer"
               target="_blank"
               aria-label="Open in Netflix"
               onClick="fathom.trackGoal('K4Z6LC9W', 0);"
+              replace
             >
               {Metadata}
-            </a>
+            </Link>
 
             <CopyToClipboard text={link}>
               <CopyText isHovered={isHovered} onClick={handleClick}>

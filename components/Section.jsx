@@ -36,6 +36,7 @@ export function Section({ season }) {
               season={season}
               episode={sketch.episode}
               link={sketch.netflixLink}
+              slug={sketch.slug}
             />
           )
         )}

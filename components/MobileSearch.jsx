@@ -55,8 +55,6 @@ export function MobileSearch({ sketches }) {
 
   const results = fuse.search(" " + query);
 
-  console.log(results);
-
   const sketchResults =
     query.length > 0 ? results.map((sketch) => sketch.item) : sortedArray;
 
