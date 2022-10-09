@@ -58,22 +58,17 @@ export default function Home({ sketches }) {
           content="I think it's a good website, and I stand by it."
         />
         <script
-          defer
-          data-domain="itylsdb.com"
-          src="https://plausible.io/js/plausible.js"
-        ></script>
-        <script
           src="https://cdn.usefathom.com/script.js"
           data-site="XWPPCZKS"
           defer
         ></script>
       </Head>
       <Container>
-        <RandomButton sketches={SketchList} />
-        <Search sketches={SketchList} />
-        <Section sketches={SketchList} season={1} />
-        <Section sketches={SketchList} season={2} />
-        <Section sketches={SketchList} season={0} />
+        <RandomButton sketches={sketches} />
+        <Search sketches={sketches} />
+        <Section sketches={sketches} season={1} />
+        <Section sketches={sketches} season={2} />
+        <Section sketches={sketches} season={0} />
         <Footer>
           Site by <a href={"https://twitter.com/JLampron"}>lamp</a>
         </Footer>
@@ -82,3 +77,11 @@ export default function Home({ sketches }) {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      sketches: SketchList,
+    },
+  };
+};
