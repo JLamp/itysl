@@ -43,7 +43,7 @@ export function RandomButton({ sketches }) {
     var min = Math.ceil(0);
     var max = Math.floor(sketches.length);
     var ep = Math.floor(Math.random() * (max - min) + min);
-    window.open(sketches[ep].properties.Link["url"]);
+    window.open(sketches[ep].netflixLink);
   }
 
   const [playSound] = useSound("/sounds/random.mp3");
