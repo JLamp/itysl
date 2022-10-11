@@ -210,7 +210,7 @@ export function Sketch({ episode, image, link, season, title, slug }) {
               {Metadata}
             </a>
 
-            <CopyToClipboard text={`itysldb.com/${slug}`}>
+            <CopyToClipboard text={link}>
               <CopyText isHovered={isHovered} onClick={handleClick}>
                 Copy Link
               </CopyText>
