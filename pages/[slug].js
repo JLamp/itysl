@@ -37,10 +37,7 @@ export default function SketchPage({ sketch }) {
           content="/images/covers/baby-cries.jpg"
         />
         <meta property="og:title" content={`${sketch.name} - ITYSL`} />
-        <meta
-          property="og:image"
-          content="https://i.ibb.co/n6GPwBM/meta-image.jpg"
-        />
+        <meta property="og:image" content="/images/covers/baby-cries.jpg" />
         <meta property="og:description" content={description} />
         <script
           src="https://cdn.usefathom.com/script.js"
@@ -55,6 +52,7 @@ export default function SketchPage({ sketch }) {
     <>
       <ComposedHead />
       <div>Hello</div>
+      <img src="/images/covers/baby-cries.jpg" />
       <h1>{sketch.name}</h1>
     </>
   );
