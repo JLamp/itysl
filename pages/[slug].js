@@ -34,7 +34,7 @@ export default function SketchPage({ sketch }) {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:image"
-          content="https://i.ibb.co/n6GPwBM/meta-image.jpg"
+          content="/images/covers/baby-cries.jpg"
         />
         <meta property="og:title" content={`${sketch.name} - ITYSL`} />
         <meta
