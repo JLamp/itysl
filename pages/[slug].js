@@ -27,15 +27,14 @@ export default function SketchPage({ sketch }) {
   // });
 
   const ComposedHead = () => {
+    const image = `/images/covers/${sketch.slug}.jpg`;
     return (
       <Head>
         <title>{sketch.name}</title>
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="og:title" content={`${sketch.name} - ITYSL`} />
-        <meta
-          property="og:image"
-          content={`/images/covers/${sketch.slug}.jpg`}
-        />
+        <meta property="twitter:image" content={image} />
+        <meta property="og:image" content={image} />
         <meta
           property="og:description"
           content={`I Think You Should Leave | Episode ${sketch.episode} | Season ${sketch.season}`}
