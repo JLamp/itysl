@@ -22,9 +22,9 @@ export const getStaticPaths = async () => {
 };
 
 export default function SketchPage({ sketch }) {
-  // useEffect(() => {
-  //   window.location.assign(sketch.netflixLink);
-  // });
+  useEffect(() => {
+    window.location.href(sketch.netflixLink);
+  });
 
   const ComposedHead = () => {
     const image = `/images/covers/${sketch.slug}.jpg`;
@@ -37,7 +37,7 @@ export default function SketchPage({ sketch }) {
         <meta property="og:image" content={image} />
         <meta
           property="og:description"
-          content={`I Think You Should Leave | Episode ${sketch.episode} | Season ${sketch.season}`}
+          content={`I Think You Should Leave | Season ${sketch.season} | Episode ${sketch.episode}`}
         />
         <script
           src="https://cdn.usefathom.com/script.js"

@@ -7,7 +7,6 @@ import { Search } from "../components/Search";
 import styled from "styled-components";
 import { device } from "../constants/Devices";
 import { SketchList } from "../constants/SketchList";
-import { Sketch } from "../components/Sketch";
 
 const Container = styled.div`
   display: flex;
