@@ -46,7 +46,7 @@ const Header = styled.a`
   height: 100%;
 `;
 
-const SketchImage = styled(Image)`
+const SketchImage = styled.a`
   border-radius: 8px 8px 0 0;
 `;
 
@@ -192,7 +192,7 @@ export function Sketch({ episode, image, link, season, title, slug }) {
       <SketchInfoContainer>
         <SketchInfo>
           <Title
-            href={`/${encodeURIComponent(slug)}`}
+            href={link}
             rel="noreferrer"
             target="_blank"
             aria-label="Open in Netflix"
@@ -203,8 +203,8 @@ export function Sketch({ episode, image, link, season, title, slug }) {
           </Title>
 
           <MetaDataContainer>
-            <Link
-              href={`/${encodeURIComponent(slug)}`}
+            <a
+              href={link}
               rel="noreferrer"
               target="_blank"
               aria-label="Open in Netflix"
@@ -212,9 +212,9 @@ export function Sketch({ episode, image, link, season, title, slug }) {
               replace
             >
               {Metadata}
-            </Link>
+            </a>
 
-            <CopyToClipboard text={link}>
+            <CopyToClipboard text={`itysldb.com/${slug}`}>
               <CopyText isHovered={isHovered} onClick={handleClick}>
                 Copy Link
               </CopyText>
