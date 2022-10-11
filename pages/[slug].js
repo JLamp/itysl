@@ -22,23 +22,24 @@ export const getStaticPaths = async () => {
 };
 
 export default function SketchPage({ sketch }) {
-  useEffect(() => {
-    window.location.assign(sketch.netflixLink);
-  });
+  // useEffect(() => {
+  //   window.location.assign(sketch.netflixLink);
+  // });
 
   const ComposedHead = () => {
-    const description = `Episode ${sketch.episode} | Season ${sketch.season}`;
     return (
       <Head>
         <title>{sketch.name}</title>
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:image"
-          content="/images/covers/baby-cries.jpg"
-        />
         <meta property="og:title" content={`${sketch.name} - ITYSL`} />
-        <meta property="og:image" content="/images/covers/baby-cries.jpg" />
-        <meta property="og:description" content={description} />
+        <meta
+          property="og:image"
+          content={`/images/covers/${sketch.slug}.jpg`}
+        />
+        <meta
+          property="og:description"
+          content={`I Think You Should Leave | Episode ${sketch.episode} | Season ${sketch.season}`}
+        />
         <script
           src="https://cdn.usefathom.com/script.js"
           data-site="XWPPCZKS"
@@ -52,7 +53,7 @@ export default function SketchPage({ sketch }) {
     <>
       <ComposedHead />
       <div>Hello</div>
-      <img src="/images/covers/baby-cries.jpg" />
+      <img src={`/images/covers/${sketch.slug}.jpg`} />
       <h1>{sketch.name}</h1>
     </>
   );
