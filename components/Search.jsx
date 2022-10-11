@@ -36,16 +36,13 @@ export function Search({ sketches }) {
 
   sketches.map((sketch) =>
     sketchArray.push({
-      Cover:
-        "/images/covers/" +
-        sketch.properties.image.rich_text[0]["plain_text"] +
-        ".jpg",
-      Title: " " + sketch.properties.Name.title[0]["plain_text"],
-      Season: sketch.properties.Season["number"],
-      Episode: sketch.properties.Episode["number"],
-      Timestamp: MakeTimeStamp(sketch.properties.Link["url"]),
-      Link: sketch.properties.Link["url"],
-      Transcript: sketch.properties.Transcript.rich_text[0]["plain_text"],
+      Cover: "/images/covers/" + sketch.slug + ".jpg",
+      Title: " " + sketch.name,
+      Season: sketch.season,
+      Episode: sketch.episode,
+      Timestamp: MakeTimeStamp(sketch.netflixLink),
+      Link: sketch.netflixLink,
+      Transcript: sketch.transcript,
     })
   );
 

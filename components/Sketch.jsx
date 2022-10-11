@@ -7,6 +7,7 @@ import { MakeTimeStamp } from "./MakeTimeStamp";
 import styled from "styled-components";
 import { device } from "../constants/Devices.jsx";
 import { useState } from "react";
+import Link from "next/link";
 
 const Card = styled.div`
   margin-bottom: 16px;
@@ -134,7 +135,7 @@ const ToastImage = styled.div`
   margin-right: 8px;
 `;
 
-export function Sketch(props) {
+export function Sketch({ episode, image, link, season, title, slug }) {
   const [isHovered, updateHover] = useState(false);
 
   function handleMouseEnter() {
@@ -144,7 +145,7 @@ export function Sketch(props) {
   function handleMouseLeave() {
     updateHover(false);
   }
-  const coverImage = "/images/covers/" + props.image + ".jpg";
+  const coverImage = "/images/covers/" + image + ".jpg";
 
   const toastContent = (
     <ToastContent>
@@ -163,14 +164,13 @@ export function Sketch(props) {
     });
   };
 
-  const TimeStamp = MakeTimeStamp(props.link);
-  console.log(props.season);
+  const TimeStamp = MakeTimeStamp(link);
 
   const Metadata =
-    props.season !== 0 ? (
+    season !== 0 ? (
       <>
-        Sn. {props.season} {Bar} Ep.
-        {props.episode} {Bar} {TimeStamp}
+        Sn. {season} {Bar} Ep.
+        {episode} {Bar} {TimeStamp}
       </>
     ) : (
       <>
@@ -180,7 +180,7 @@ export function Sketch(props) {
 
   return (
     <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Header href={props.link} rel="noreferrer" target="_blank" tabIndex="-1">
+      <Header href={link} rel="noreferrer" target="_blank" tabIndex="-1">
         <SketchImage
           src={coverImage}
           layout="fill"
@@ -192,34 +192,32 @@ export function Sketch(props) {
       <SketchInfoContainer>
         <SketchInfo>
           <Title
-            href={props.link}
+            href={link}
             rel="noreferrer"
             target="_blank"
             aria-label="Open in Netflix"
-            onClick="fathom.trackGoal('K4Z6LC9W', 0);"
           >
-            {props.title}
+            {title}
           </Title>
 
           <MetaDataContainer>
             <a
-              href={props.link}
+              href={link}
               rel="noreferrer"
               target="_blank"
               aria-label="Open in Netflix"
-              onClick="fathom.trackGoal('K4Z6LC9W', 0);"
             >
               {Metadata}
             </a>
 
-            <CopyToClipboard text={props.link}>
+            <CopyToClipboard text={link}>
               <CopyText isHovered={isHovered} onClick={handleClick}>
                 Copy Link
               </CopyText>
             </CopyToClipboard>
           </MetaDataContainer>
         </SketchInfo>
-        <CopyToClipboard text={props.link}>
+        <CopyToClipboard text={link}>
           <CopyIcon onClick={handleClick}>
             <Image src={copyIcon} layout="fill" />
           </CopyIcon>
