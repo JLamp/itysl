@@ -23,7 +23,7 @@ export const getStaticPaths = async () => {
 
 export default function SketchPage({ sketch }) {
   useEffect(() => {
-    window.location.href(sketch.netflixLink);
+    window.location.assign(sketch.netflixLink);
   });
 
   const ComposedHead = () => {
@@ -51,9 +51,6 @@ export default function SketchPage({ sketch }) {
   return (
     <>
       <ComposedHead />
-      <div>Hello</div>
-      <img src={`/images/covers/${sketch.slug}.jpg`} />
-      <h1>{sketch.name}</h1>
     </>
   );
 }
