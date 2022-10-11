@@ -60,7 +60,7 @@ export default function SketchPage({ sketch }) {
   return (
     <>
       <ComposedHead />
-      <div>Hi</div>
+      <div>Hello</div>
       <h1>{sketch.name}</h1>
     </>
   );
