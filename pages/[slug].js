@@ -27,6 +27,7 @@ export default function SketchPage({ sketch }) {
   });
 
   const ComposedHead = () => {
+    const description = `Episode ${sketch.episode} | Season ${sketch.season}`;
     return (
       <Head>
         <title>{sketch.name}</title>
@@ -35,19 +36,12 @@ export default function SketchPage({ sketch }) {
           property="twitter:image"
           content="https://i.ibb.co/n6GPwBM/meta-image.jpg"
         />
-        <meta property="og:title" content="I Think You Should Leave Database" />
+        <meta property="og:title" content={`${sketch.name} - ITYSL`} />
         <meta
           property="og:image"
           content="https://i.ibb.co/n6GPwBM/meta-image.jpg"
         />
-        <meta
-          property="og:description"
-          content="I think it's a good website, and I stand by it."
-        />
-        <meta
-          property="og:description"
-          content="I think it's a good website, and I stand by it."
-        />
+        <meta property="og:description" content={description} />
         <script
           src="https://cdn.usefathom.com/script.js"
           data-site="XWPPCZKS"
