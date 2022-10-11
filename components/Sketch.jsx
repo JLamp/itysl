@@ -46,7 +46,7 @@ const Header = styled.a`
   height: 100%;
 `;
 
-const SketchImage = styled.a`
+const SketchImage = styled(Image)`
   border-radius: 8px 8px 0 0;
 `;
 
@@ -196,8 +196,6 @@ export function Sketch({ episode, image, link, season, title, slug }) {
             rel="noreferrer"
             target="_blank"
             aria-label="Open in Netflix"
-            onClick="fathom.trackGoal('K4Z6LC9W', 0);"
-            replace
           >
             {title}
           </Title>
@@ -208,8 +206,6 @@ export function Sketch({ episode, image, link, season, title, slug }) {
               rel="noreferrer"
               target="_blank"
               aria-label="Open in Netflix"
-              onClick="fathom.trackGoal('K4Z6LC9W', 0);"
-              replace
             >
               {Metadata}
             </a>
