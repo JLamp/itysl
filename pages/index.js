@@ -67,6 +67,7 @@ export default function Home({ sketches }) {
         <Search sketches={sketches} />
         <Section sketches={sketches} season={1} />
         <Section sketches={sketches} season={2} />
+        <Section sketches={sketches} season={3} />
         <Section sketches={sketches} season={0} />
         <Footer>
           Site by <a href={"https://twitter.com/JLampron"}>lamp</a>
